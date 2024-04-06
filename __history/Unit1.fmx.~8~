@@ -1,0 +1,187 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 580
+  ClientWidth = 968
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object GymUsersGrid: TStringGrid
+    CanFocus = True
+    ClipChildren = True
+    Position.X = 40.000000000000000000
+    Position.Y = 108.000000000000000000
+    Size.Width = 481.000000000000000000
+    Size.Height = 137.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Family = 'Sitka Subheading'
+    TextSettings.Font.StyleExt = {00060000000100000004000000}
+    TextSettings.FontColor = claCrimson
+    StyledSettings = [Size]
+    TabOrder = 3
+    RowCount = 12
+    Viewport.Width = 461.000000000000000000
+    Viewport.Height = 96.000000000000000000
+  end
+  object MainMenu1: TMainMenu
+    Left = 760
+  end
+  object MembershipsGrid: TStringGrid
+    CanFocus = True
+    ClipChildren = True
+    Position.X = 552.000000000000000000
+    Position.Y = 108.000000000000000000
+    Size.Width = 265.000000000000000000
+    Size.Height = 137.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.StyleExt = {00060000000100000004000000}
+    TextSettings.FontColor = claBlueviolet
+    StyledSettings = [Family, Size]
+    TabOrder = 11
+    RowCount = 3
+    Viewport.Width = 261.000000000000000000
+    Viewport.Height = 96.000000000000000000
+  end
+  object BindNavigator1: TBindNavigator
+    Position.X = 144.000000000000000000
+    Position.Y = 253.000000000000000000
+    Size.Width = 240.000000000000000000
+    Size.Height = 25.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 13
+    DataSource = BindSourceDB1
+    xRadius = 4.000000000000000000
+    yRadius = 4.000000000000000000
+  end
+  object BindNavigator2: TBindNavigator
+    Position.X = 577.000000000000000000
+    Position.Y = 253.000000000000000000
+    Size.Width = 240.000000000000000000
+    Size.Height = 25.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 15
+    DataSource = BindSourceDB2
+    xRadius = 4.000000000000000000
+    yRadius = 4.000000000000000000
+  end
+  object FilteredUsersGrid: TStringGrid
+    CanFocus = True
+    ClipChildren = True
+    Position.X = 248.000000000000000000
+    Position.Y = 360.000000000000000000
+    Size.Width = 473.000000000000000000
+    Size.Height = 172.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Family = 'Sitka Small'
+    TextSettings.Font.StyleExt = {00060000000100000004000000}
+    TextSettings.FontColor = claMediumvioletred
+    StyledSettings = [Size]
+    TabOrder = 27
+    RowCount = 2
+    Viewport.Width = 469.000000000000000000
+    Viewport.Height = 131.000000000000000000
+  end
+  object EmployeeConnection: TFDConnection
+    Params.Strings = (
+      'ConnectionDef=EMPLOYEE')
+    Connected = True
+    LoginPrompt = False
+    Left = 421
+    Top = 18
+  end
+  object GymUsers: TFDQuery
+    Active = True
+    Connection = EmployeeConnection
+    SQL.Strings = (
+      'SELECT * FROM GYMUSERS')
+    Left = 54
+    Top = 46
+  end
+  object BindSourceDB1: TBindSourceDB
+    DataSet = GymUsers
+    ScopeMappings = <>
+    Left = 848
+    Top = 8
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 808
+    Top = 65525
+    object LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      GridControl = GymUsersGrid
+      Columns = <>
+    end
+    object LinkGridToDataSourceBindSourceDB2: TLinkGridToDataSource
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB2
+      GridControl = MembershipsGrid
+      Columns = <>
+    end
+    object LinkGridToDataSourceBindSourceDB3: TLinkGridToDataSource
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB3
+      GridControl = FilteredUsersGrid
+      Columns = <>
+    end
+  end
+  object FDQuery2: TFDQuery
+    Connection = EmployeeConnection
+    SQL.Strings = (
+      'SELECT * FROM MEMBERSHIPTYPES')
+    Left = 1012
+    Top = 262
+  end
+  object MembershiptypesTable: TFDQuery
+    Active = True
+    Connection = EmployeeConnection
+    SQL.Strings = (
+      'SELECT * FROM MEMBERSHIPTYPES')
+    Left = 610
+    Top = 34
+  end
+  object BindSourceDB2: TBindSourceDB
+    DataSet = MembershiptypesTable
+    ScopeMappings = <>
+    Left = 776
+    Top = 8
+  end
+  object FDQuery1: TFDQuery
+    Active = True
+    MasterSource = DataSource1
+    MasterFields = 'MEMBERSHIPID'
+    DetailFields = 'MEMBERSHIPID'
+    Connection = EmployeeConnection
+    FetchOptions.AssignedValues = [evCache]
+    FetchOptions.Cache = [fiBlobs, fiMeta]
+    SQL.Strings = (
+      'select * from GymUsers'
+      ' where MembershipId=:MembershipId'
+      ''
+      '')
+    Left = 432
+    Top = 304
+    ParamData = <
+      item
+        Name = 'MEMBERSHIPID'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = 1
+      end>
+  end
+  object DataSource1: TDataSource
+    DataSet = MembershiptypesTable
+    Left = 504
+    Top = 304
+  end
+  object BindSourceDB3: TBindSourceDB
+    DataSet = FDQuery1
+    ScopeMappings = <>
+    Left = 848
+    Top = 16
+  end
+end
