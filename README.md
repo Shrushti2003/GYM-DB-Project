@@ -15,7 +15,7 @@ The main goal of this project is to create a comprehensive tool for managing gym
   - **Last Name**: Member's last name.
 
 - **Membership Types Table**:
-  - **ID**: Numerical identifier for membership types (1 for Weekly, 2 for Monthly, 3 for Yearly).
+  - **ID**: Numerical identifier for membership types (1 = Weekly, 2 = Monthly, 3 = Yearly).
   - **Membership Type**: Description of the membership type corresponding to the ID.
 
 - **Summary Table**:
