@@ -68,7 +68,10 @@ The main goal of this project is to create a comprehensive tool for managing gym
 ## Conclusion
 This C++ Gym Database App provides a structured and user-friendly solution for managing gym membership data. By organizing information into clear tables and offering intuitive management functions, the application supports efficient and effective gym operations.
 
-[https://youtu.be/ON8_7b_R4Mo?si=j8j9HZNfT0VL5g5A]
+[YouTube video link for the Gym Database Project](https://youtu.be/ON8_7b_R4Mo?si=saHk7fQ8noeRWZjE)
+
+This video offers a concise and clear overview of your Gym Database Project, reflecting the simplicity and functionality of the application.
+
 
 
 ---
